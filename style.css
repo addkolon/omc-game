@@ -5,7 +5,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'VT323', monospace;
-    font-size: 24px;
+    font-size: 32px;
+    color: white;
 }
 
 body {
