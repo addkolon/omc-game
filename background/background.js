@@ -1,5 +1,6 @@
 /** @format */
 
+import { boat } from "../boat/boat.js";
 import { ctx } from "../index.js";
 
 // BACKGROUND - Mattias
@@ -38,6 +39,18 @@ class Layer {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     ctx.drawImage(this.image, this.x2, this.y2, this.width, this.height);
   }
+
+  hehe() {
+    console.log(boat.moving);
+    if (!boat.moving) {
+      this.speed = 0;
+      this.draw();
+    } else {
+      this.speed = 10 * this.speedModifier;
+      this.update();
+      this.draw();
+    }
+  }
 }
 
 const layer1 = new Layer(bg4, 0.04);
@@ -62,7 +75,12 @@ export const checkBackground = () => {
       gameBg.pop(gameBg[i]);
       console.log(gameBg);
     }
-    object.update();
+    if (!boat.moving) {
+      object.speed = 0;
+    } else {
+      object.speed = 10 * object.speedModifier;
+      object.update();
+    }
     object.draw();
   });
 };

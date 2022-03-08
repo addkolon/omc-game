@@ -6,7 +6,7 @@ import { gamePlay } from "./gamePlay/gamePlay.js";
 
 import { checkBackground } from "./background/background.js";
 
-import { drawSprite, boatSprite, boat, moveBoat } from "./boat/boat.js";
+import { boat, handleBoatFrame, moveBoat } from "./boat/boat.js";
 
 import { handleObstacles } from "./stones/stones.js";
 
@@ -37,9 +37,20 @@ const animate = () => {
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawSprite(
-      boatSprite,
-      boat.width * boat.frameX,
+    // drawSprite(
+    //   boatSprite,
+    //   boat.width * boat.frameX,
+    //   boat.height * boat.frameY,
+    //   boat.width,
+    //   boat.height,
+    //   boat.x,
+    //   boat.y,
+    //   boat.width,
+    //   boat.height
+    // );
+    boat.draw(
+      boat.image,
+      boat.frameY !== 1 ? boat.width * boat.frameX : 133,
       boat.height * boat.frameY,
       boat.width,
       boat.height,
@@ -50,8 +61,6 @@ const animate = () => {
     );
 
     checkBackground();
-
-    moveBoat();
 
     if (handleMissedGuy()) {
       gamePlay.updateLives();
@@ -70,7 +79,13 @@ const animate = () => {
     handleObstacles();
     handleGuys();
 
+    moveBoat();
+
     gamePlay.updateFrame();
+
+    if (gamePlay.frame % 10 === 0) {
+      handleBoatFrame();
+    }
 
     if (gamePlay.frame % 500 === 0) {
       gamePlay.updateSpeed(1, "add");
@@ -78,4 +93,4 @@ const animate = () => {
   }
 };
 
-startAnimating(360);
+startAnimating(100);

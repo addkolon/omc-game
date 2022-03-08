@@ -8,72 +8,84 @@ let changeGameSpeed = true;
 
 let drivingSpeedChange = 2;
 
-export const boat = {
-  x: 100,
-  y: 100,
-  width: 176,
-  height: 74,
-  frameX: 0,
-  frameY: 0,
-  speed: 5,
-  moving: false,
-};
+const boatImage = new Image();
+boatImage.src = "../sprite/boat-3.png";
 
-export const boatSprite = new Image();
-boatSprite.src = "../sprite/boat-3.png";
+export class Boat {
+  constructor(image, x, y, width, height, frameX, frameY, speed, moving) {
+    this.image = image;
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.frameX = frameX;
+    this.frameY = frameY;
+    this.speed = speed;
+    this.moving = moving;
+  }
 
-export const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
-  ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
-};
+  draw = (image, x, y, width, height, frameX, frameY, dW, dH) => {
+    ctx.drawImage(image, x, y, width, height, frameX, frameY, dW, dH);
+  };
+
+  update = () => {
+    this.x -= gamePlay.speed;
+    this.draw();
+  };
+}
 
 // boat coming in from side
+
+export const handleBoatFrame = () => {
+  console.log(boat.frameX);
+  if (boat.frameX < 2 && boat.moving) {
+    boat.frameX += 1;
+  } else {
+    boat.frameX = 0;
+  }
+};
 
 const keys = [];
 export const moveBoat = () => {
   if (keys["ArrowUp"] && boat.y > 125) {
     boat.y -= boat.speed;
-    boat.frameX = 1;
+    // boat.frameX = 1;
     boat.frameY = 1;
     boat.moving = true;
   }
   if (keys["ArrowDown"] && boat.y < canvas.height - boat.height) {
     boat.y += boat.speed;
-    boat.frameX = 1;
+    // boat.frameX = 1;
     boat.frameY = 1;
     boat.moving = true;
   }
-  if (keys["ArrowLeft"]) {
-    if (boat.x > 0) {
-      boat.x -= boat.speed;
-      boat.frameX = 1;
-      boat.frameY = 2;
-      boat.moving = true;
-    }
+  if (keys["ArrowLeft"] && boat.x > 0) {
+    boat.x -= boat.speed;
+    // boat.frameX = 1;
+    boat.frameY = 2;
+    boat.moving = true;
 
-    if (changeGameSpeed) {
-      console.log("left");
-      if (gamePlay.speed > 1 && !keys["ArrowRight"]) {
-        gamePlay.updateSpeed(drivingSpeedChange, false);
-      }
-      changeGameSpeed = false;
-    }
+    // if (changeGameSpeed) {
+    //   console.log("left");
+    //   if (gamePlay.speed > 1 && !keys["ArrowRight"]) {
+    //     gamePlay.updateSpeed(drivingSpeedChange, false);
+    //   }
+    //   changeGameSpeed = false;
+    // }
   }
-  if (keys["ArrowRight"]) {
-    if (boat.x < canvas.width - boat.width) {
-      boat.x += boat.speed;
-      boat.frameX = 2;
-      boat.frameY = 0;
-      boat.moving = true;
-    }
+  if (keys["ArrowRight"] && boat.x < canvas.width - boat.width) {
+    boat.x += boat.speed;
+    // boat.frameX = 1;
+    boat.frameY = 0;
+    boat.moving = true;
 
-    if (changeGameSpeed) {
-      console.log("right");
-      if (!keys["ArrowDown"]) {
-        gamePlay.updateSpeed(drivingSpeedChange, true);
-        // gameSpeed += drivingSpeedChange;
-      }
-      changeGameSpeed = false;
-    }
+    // if (changeGameSpeed) {
+    //   console.log("right");
+    //   if (!keys["ArrowDown"]) {
+    //     gamePlay.updateSpeed(drivingSpeedChange, true);
+    //   }
+    //   changeGameSpeed = false;
+    // }
   }
 
   // speedboost? :P
@@ -87,27 +99,33 @@ export const moveBoat = () => {
 };
 
 window.addEventListener("keydown", (e) => {
-  if (!keys[e.key]) {
-    keys[e.key] = true;
-  }
+  keys[e.key] = true;
+  // if (!keys[e.key]) {
+  //   keys[e.key] = true;
+  // }
 });
 
 window.addEventListener("keyup", (e) => {
-  if (keys[e.key]) {
-    delete keys[e.key];
-    if (e.key === "ArrowRight") {
-      console.log("right up");
-      if (!keys["ArrowLeft"] && gamePlay.speed > 1) {
-        gamePlay.updateSpeed(drivingSpeedChange, false);
-      }
-      changeGameSpeed = true;
-    }
-    if (e.key === "ArrowLeft") {
-      console.log("left up");
-      if (!keys["ArrowRight"] && gamePlay.speed > 1) {
-        gamePlay.updateSpeed(drivingSpeedChange, true);
-      }
-      changeGameSpeed = true;
-    }
-  }
+  delete keys[e.key];
+  boat.moving = false;
+
+  // if (keys[e.key]) {
+  //   delete keys[e.key];
+  //   if (e.key === "ArrowRight") {
+  //     console.log("right up");
+  //     if (!keys["ArrowLeft"] && gamePlay.speed > 1) {
+  //       gamePlay.updateSpeed(drivingSpeedChange, false);
+  //     }
+  //     changeGameSpeed = true;
+  //   }
+  //   if (e.key === "ArrowLeft") {
+  //     console.log("left up");
+  //     if (!keys["ArrowRight"] && gamePlay.speed > 1) {
+  //       gamePlay.updateSpeed(drivingSpeedChange, true);
+  //     }
+  //     changeGameSpeed = true;
+  //   }
+  // }
 });
+
+export const boat = new Boat(boatImage, 100, 100, 176, 74, 0, 0, 5, false);
