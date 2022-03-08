@@ -3,6 +3,7 @@
 import { canvas, ctx } from "../index.js";
 
 import { gamePlay } from "../gamePlay/gamePlay.js";
+import { gameBg } from "../background/background.js";
 
 let changeGameSpeed = true;
 
@@ -49,21 +50,29 @@ const keys = [];
 export const moveBoat = () => {
   if (keys["ArrowUp"] && boat.y > 125) {
     boat.y -= boat.speed;
-    // boat.frameX = 1;
     boat.frameY = 1;
     boat.moving = true;
+    gameBg.forEach((b) => {
+      b.update();
+    });
   }
   if (keys["ArrowDown"] && boat.y < canvas.height - boat.height) {
     boat.y += boat.speed;
-    // boat.frameX = 1;
     boat.frameY = 1;
     boat.moving = true;
+
+    gameBg.forEach((b) => {
+      b.update();
+    });
   }
   if (keys["ArrowLeft"] && boat.x > 0) {
     boat.x -= boat.speed;
-    // boat.frameX = 1;
     boat.frameY = 2;
     boat.moving = true;
+
+    gameBg.forEach((b) => {
+      b.update2(false);
+    });
 
     // if (changeGameSpeed) {
     //   console.log("left");
@@ -75,10 +84,12 @@ export const moveBoat = () => {
   }
   if (keys["ArrowRight"] && boat.x < canvas.width - boat.width) {
     boat.x += boat.speed;
-    // boat.frameX = 1;
     boat.frameY = 0;
     boat.moving = true;
 
+    gameBg.forEach((b) => {
+      b.update2(true);
+    });
     // if (changeGameSpeed) {
     //   console.log("right");
     //   if (!keys["ArrowDown"]) {
@@ -128,4 +139,4 @@ window.addEventListener("keyup", (e) => {
   // }
 });
 
-export const boat = new Boat(boatImage, 100, 100, 176, 74, 0, 0, 5, false);
+export const boat = new Boat(boatImage, 200, 200, 176, 74, 0, 0, 5, false);

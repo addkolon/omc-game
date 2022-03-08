@@ -23,6 +23,7 @@ class Layer {
     this.image = image;
     this.speedModifier = speedModifier;
     this.speed = 10 * this.speedModifier;
+    this.tempSpeed = 10 * this.speedModifier;
   }
   update() {
     this.speed = 10 * this.speedModifier;
@@ -35,21 +36,22 @@ class Layer {
     this.x = this.x - this.speed;
     this.x2 = this.x2 - this.speed;
   }
+
+  update2(faster) {
+    this.tempSpeed = faster ? 20 * this.speedModifier : 4 * this.speedModifier;
+    if (this.x <= -this.width) {
+      this.x = this.width + this.x2 - this.tempSpeed;
+    }
+    if (this.x2 <= -this.width) {
+      this.x2 = this.width + this.x - this.tempSpeed;
+    }
+    this.x = this.x - this.tempSpeed;
+    this.x2 = this.x2 - this.tempSpeed;
+  }
+
   draw() {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     ctx.drawImage(this.image, this.x2, this.y2, this.width, this.height);
-  }
-
-  hehe() {
-    console.log(boat.moving);
-    if (!boat.moving) {
-      this.speed = 0;
-      this.draw();
-    } else {
-      this.speed = 10 * this.speedModifier;
-      this.update();
-      this.draw();
-    }
   }
 }
 
