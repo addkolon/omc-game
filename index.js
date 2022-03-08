@@ -307,15 +307,15 @@ const handleCollisions = () => {
 
 // guy *************
 const guy = new Image();
-guy.src = "./sprite/drowningGuy.png"
+guy.src = "./sprite/Person.png"
 const guyArray = [];
 
 class DrowningGuy {
     constructor(x, y, width, height, image) {
         this.x = canvas.width;
         this.y = Math.random() * (canvas.height - 125 - 134) + 125 ;
-        this.width = 187;
-        this.height = 134;
+        this.width = 60;
+        this.height = 51;
         this.image = guy;
     }
 
