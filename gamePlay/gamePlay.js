@@ -22,7 +22,7 @@ export class GamePlay {
   };
 
   updateScore = () => {
-    this.score += 1;
+    this.score += 100;
     savesEl.textContent = "Räddade: " + this.score;
   };
 
