@@ -4,6 +4,9 @@ import {  canvas, ctx } from "../index.js";
 
 import { gamePlay } from "../gamePlay/gamePlay.js";
 
+// hur ofta guys spawnar
+let guysFrequency = 50;
+
 const guy = new Image();
 guy.src = "../sprite/Person.png";
 export const guyArray = [];
@@ -28,7 +31,7 @@ export class DrowningGuy {
 }
 
 export const handleGuys = () => {
-  if (gamePlay.frame % 100 === 0) {
+  if (gamePlay.frame % guysFrequency === 0) {
     
     guyArray.unshift(new DrowningGuy());
   }

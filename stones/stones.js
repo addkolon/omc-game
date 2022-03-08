@@ -4,6 +4,9 @@ import { canvas, ctx } from "../index.js";
 
 import { gamePlay } from "../gamePlay/gamePlay.js";
 
+// hur ofta stenar spawnar
+let stonesFrequency = 5000;
+
 const stone = new Image();
 stone.src = "../sprite/Stones.png";
 export const stoneArray = [];
@@ -27,7 +30,7 @@ class Stone {
 }
 
 export const handleObstacles = () => {
-  if (gamePlay.frame % 500000 === 0) {
+  if (gamePlay.frame % stonesFrequency === 0) {
     stoneArray.push(new Stone());
   }
 

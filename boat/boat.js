@@ -41,6 +41,7 @@ export class Boat {
 export const handleBoatFrame = () => {
   console.log(boat.frameX);
   if (boat.frameX < 2 && boat.moving) {
+    console.log("innnnnne");
     boat.frameX += 1;
   } else {
     boat.frameX = 0;
@@ -72,7 +73,7 @@ export const moveBoat = () => {
     boat.moving = true;
 
     if (!gamePlay.tempSpeedOn) {
-      gamePlay.updateTempSpeed(false, 2, false);
+      gamePlay.updateTempSpeed(false, 6, false);
       gamePlay.tempSpeedOn = true;
     }
 
