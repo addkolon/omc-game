@@ -6,9 +6,13 @@ canvas.width = 1200;
 canvas.height = 800;
 
 const gameSpeedEl = document.querySelector("h2");
+const lifesEl = document.querySelector("h3");
 
 let frame = 0;
 let gameSpeed = 5;
+let changeGameSpeed = true;
+
+let lifes = 3;
 
 const boat = {
   x: 100,
@@ -74,9 +78,12 @@ const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
 };
 
+
+
+
 const keys = [];
 const moveBoat = () => {
-  if (keys["ArrowUp"] && boat.y > 0) {
+  if (keys["ArrowUp"] && boat.y > 125) {
     boat.y -= boat.speed;
     boat.frameX = 1;
     boat.frameY = 1;
@@ -88,17 +95,45 @@ const moveBoat = () => {
     boat.frameY = 1;
     boat.moving = true;
   }
-  if (keys["ArrowLeft"] && boat.x > 0) {
-    boat.x -= boat.speed;
+  if (keys["ArrowLeft"] ) {
+
+    if (boat.x > 0) {
+      boat.x -= boat.speed;
     boat.frameX = 0;
     boat.frameY = 3;
     boat.moving = true;
+    }
+
+    if (changeGameSpeed) {
+      console.log('left');
+      if (gameSpeed > 1  && !keys["ArrowRight"]) {
+        gameSpeed--;
+      }
+      changeGameSpeed = false;
+    }
+    
+
+    
   }
-  if (keys["ArrowRight"] && boat.x < canvas.width - boat.width) {
+  if (keys["ArrowRight"]) {
+
+    if (boat.x < canvas.width - boat.width) {
     boat.x += boat.speed;
     boat.frameX = 1;
     boat.frameY = 0;
     boat.moving = true;
+  }
+
+  if (changeGameSpeed) {
+    console.log('right');
+    if (!keys["ArrowDown"]){
+    gameSpeed++;}
+    changeGameSpeed = false;
+  }
+
+    
+    
+
   }
 
   // speedboost? :P
@@ -112,10 +147,49 @@ const moveBoat = () => {
 };
 
 window.addEventListener("keydown", (e) => {
+  if (!keys[e.key]) {
   keys[e.key] = true;
+  }
+
+  // if (e.key === "ArrowRight" && !keys["ArrowLeft"]){
+  // if (changeGameSpeed) {
+  //   console.log('right');
+  //   if (!keys["ArrowDown"]){
+  //   gameSpeed++;}
+  //   changeGameSpeed = false;
+  // }}
+  // if (e.key === "ArrowLeft" && !keys["ArrowRight"]) {
+  //   if (changeGameSpeed) {
+  //     console.log('left');
+  //     if (gameSpeed > 1  && !keys["ArrowRight"]) {
+  //       gameSpeed--;
+  //     }
+  //     changeGameSpeed = false;
+  //   }
+  // }
 });
 window.addEventListener("keyup", (e) => {
-  delete keys[e.key];
+  
+
+  if (keys[e.key]) {
+    delete keys[e.key];
+  if (e.key === "ArrowRight") {
+    console.log('right up');
+    if (!keys["ArrowDown"] && gameSpeed > 1){
+      gameSpeed--;
+}
+    changeGameSpeed = true;
+  }
+  if (e.key === "ArrowLeft") {
+    console.log('left up');
+    if (gameSpeed > 1 && !keys["ArrowRight"]) {
+      gameSpeed++;
+    }
+    changeGameSpeed = true;
+  }
+}
+
+  
 });
 
 // let x = 0;
@@ -153,8 +227,21 @@ const animate = () => {
       boat.height
     );
     moveBoat();
-    handleCollisions();
+    if (handleCollisions()) {
+      console.log('liv slut');
+      lifes -= 1;
+      lifesEl.textContent = "Liv: " + lifes;
+      if (lifes < 1) {
+        lifesEl.textContent = "DÖD";
+      }
+    }
+
+    if (handleSavings()) {
+      console.log('saved');
+    }
+    
     handleObstacles();
+    handleGuys();
     
     frame++;
     if (frame%500 === 0) {
@@ -168,19 +255,21 @@ startAnimating(360);
 
 
 // stone *****************
+
+const stone = new Image();
+stone.src = "./sprite/Stones.png"
 const stoneArray = [];
 
 class Stone {
-    constructor(x, y, size, color) {
+    constructor(x, y, size, image) {
         this.x = canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.y = Math.random() * (canvas.height - 125) + 125;
         this.size = Math.floor(Math.random() * 70) + 30;
-        this.color = 'white';
+        this.image = stone;
     }
 
     draw = () => {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.size, this.size);
+        ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
     }
 
     update = () => {
@@ -208,7 +297,59 @@ const handleCollisions = () => {
     for (let i = 0; i < stoneArray.length; i++) {
         if (boat.x < stoneArray[i].x + stoneArray[i].size && boat.x + boat.width > stoneArray[i].x && boat.y < stoneArray[i].y + stoneArray[i].size && boat.y + boat.height > stoneArray[i].y) {
             console.log('pang');
-            stoneArray[i].color = 'red';
+            stoneArray.pop(stoneArray[i])
+            // stoneArray[i].color = 'red';
+            return true;
+        }
+    }
+}
+
+
+// guy *************
+const guy = new Image();
+guy.src = "./sprite/drowningGuy.png"
+const guyArray = [];
+
+class DrowningGuy {
+    constructor(x, y, width, height, image) {
+        this.x = canvas.width;
+        this.y = Math.random() * (canvas.height - 125 - 134) + 125 ;
+        this.width = 187;
+        this.height = 134;
+        this.image = guy;
+    }
+
+    draw = () => {
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+
+    update = () => {
+        this.x -= gameSpeed;
+        this.draw();
+    }
+}
+
+const handleGuys = () => {
+    if (frame%150 === 0) {
+      guyArray.unshift(new DrowningGuy);
+    }
+
+    for (let i = 0; i < guyArray.length; i++) {
+      guyArray[i].update();
+    }
+
+    if (guyArray.length > 10) {
+      guyArray.pop(guyArray[0]);
+    };
+}
+
+// collision ***********
+const handleSavings = () => {
+    for (let i = 0; i < guyArray.length; i++) {
+        if (boat.x < guyArray[i].x + guyArray[i].width && boat.x + boat.width > guyArray[i].x && boat.y < guyArray[i].y + guyArray[i].height && boat.y + boat.height > guyArray[i].y) {
+            console.log('saved');
+            guyArray.pop(guyArray[i])
+            // stoneArray[i].color = 'red';
             return true;
         }
     }
