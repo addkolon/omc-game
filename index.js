@@ -136,7 +136,6 @@ class Stone {
     }
 }
 
-
 const handleObstacles = () => {
     if (frame%200 === 0) {
       stoneArray.unshift(new Stone);
