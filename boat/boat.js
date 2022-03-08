@@ -51,7 +51,7 @@ const keys = [];
 export const moveBoat = () => {
   if (keys["ArrowUp"] && boat.y > 125) {
     boat.y -= boat.speed;
-    boat.frameY = 1;
+    boat.frameY = 3;
     boat.moving = true;
     gameBg.forEach((b) => {
       b.update();
@@ -72,7 +72,7 @@ export const moveBoat = () => {
     boat.moving = true;
 
     if (!gamePlay.tempSpeedOn) {
-      gamePlay.updateTempSpeed(false, 2, false);
+      gamePlay.updateTempSpeed(false, 3, false);
       gamePlay.tempSpeedOn = true;
     }
 
