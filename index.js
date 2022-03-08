@@ -40,16 +40,13 @@ const animate = () => {
 
     boat.draw(
       boat.image,
-      // boat.frameY !== 1 ? boat.width * boat.frameX : 178 * boat.frameX,
       boat.width * boat.frameX,
       boat.height * boat.frameY,
       boat.width,
-      // boat.frameY !== 1 ? boat.width : ,
       boat.height,
       boat.x,
       boat.y,
       boat.width,
-      // boat.frameY !== 1 ? boat.width : 133,
       boat.height
     );
 

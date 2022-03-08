@@ -5,7 +5,7 @@ import {  canvas, ctx } from "../index.js";
 import { gamePlay } from "../gamePlay/gamePlay.js";
 
 // hur ofta guys spawnar
-let guysFrequency = 50;
+let guysFrequency = 80;
 
 const guy = new Image();
 guy.src = "../sprite/Person.png";
@@ -25,7 +25,7 @@ export class DrowningGuy {
   };
 
   update = (tempSpeed) => {
-    this.x = tempSpeed ? this.x - gamePlay.tempSpeed : this.x - gamePlay.speed;
+    this.x = tempSpeed ? this.x - gamePlay.tempSpeed - 1 : this.x - gamePlay.speed - 1;
     this.draw();
   };
 }

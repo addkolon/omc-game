@@ -4,11 +4,6 @@ import { canvas, ctx } from "../index.js";
 
 import { gamePlay } from "../gamePlay/gamePlay.js";
 import { gameBg } from "../background/background.js";
-import { stoneArray } from "../stones/stones.js";
-
-let changeGameSpeed = true;
-
-let drivingSpeedChange = 2;
 
 const boatImage = new Image();
 boatImage.src = "../sprite/boat-3.png";
@@ -52,7 +47,7 @@ const keys = [];
 export const moveBoat = () => {
   if (keys["ArrowUp"] && boat.y > 125) {
     boat.y -= boat.speed;
-    boat.frameY = 1;
+    boat.frameY = 3;
     boat.moving = true;
     gameBg.forEach((b) => {
       b.update();
@@ -73,7 +68,7 @@ export const moveBoat = () => {
     boat.moving = true;
 
     if (!gamePlay.tempSpeedOn) {
-      gamePlay.updateTempSpeed(false, 6, false);
+      gamePlay.updateTempSpeed(false, 3, false);
       gamePlay.tempSpeedOn = true;
     }
 
