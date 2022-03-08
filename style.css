@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+}
+
+body {
+    background: url('sprite/bg.gif');
+    background-size: cover;
+}
+
 .hidden {
     display: none;
 }
@@ -6,8 +21,9 @@
     width: 1200px;
     height: 800px;
     border: 1px solid black;
-    background: url(sprite/oceanfloor3.jpg);
+    background: url(sprite/water9.png);
     position: absolute;
+    perspective: 500px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
