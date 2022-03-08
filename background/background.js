@@ -4,13 +4,13 @@ import { ctx } from "../index.js";
 
 // BACKGROUND - Mattias
 export const bg1 = new Image();
-bg1.src = "./sprite/bg1.png";
+bg1.src = "../sprite/bg1.png";
 export const bg2 = new Image();
-bg2.src = "./sprite/bg2.png";
+bg2.src = "../sprite/bg2.png";
 export const bg3 = new Image();
-bg3.src = "./sprite/bg3.png";
+bg3.src = "../sprite/bg3.png";
 export const bg4 = new Image();
-bg4.src = "./sprite/bg4.png";
+bg4.src = "../sprite/bg4.png";
 
 class Layer {
   constructor(image, speedModifier) {

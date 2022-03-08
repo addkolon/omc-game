@@ -5,7 +5,7 @@ import { canvas, ctx } from "../index.js";
 import { gamePlay } from "../gamePlay/gamePlay.js";
 
 const stone = new Image();
-stone.src = "./sprite/Stones.png";
+stone.src = "../sprite/Stones.png";
 export const stoneArray = [];
 
 class Stone {
@@ -39,5 +39,3 @@ export const handleObstacles = () => {
     stoneArray.pop(stoneArray[0]);
   }
 };
-
-// collision ***********

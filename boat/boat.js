@@ -12,7 +12,7 @@ export const boat = {
   x: 100,
   y: 100,
   width: 176,
-  height: 136,
+  height: 74,
   frameX: 0,
   frameY: 0,
   speed: 5,
@@ -20,7 +20,7 @@ export const boat = {
 };
 
 export const boatSprite = new Image();
-boatSprite.src = "./sprite/boat2.png";
+boatSprite.src = "../sprite/boat-3.png";
 
 export const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
@@ -43,8 +43,8 @@ export const moveBoat = () => {
   if (keys["ArrowLeft"]) {
     if (boat.x > 0) {
       boat.x -= boat.speed;
-      boat.frameX = 0;
-      boat.frameY = 3;
+      boat.frameX = 1;
+      boat.frameY = 2;
       boat.moving = true;
     }
 
@@ -59,7 +59,7 @@ export const moveBoat = () => {
   if (keys["ArrowRight"]) {
     if (boat.x < canvas.width - boat.width) {
       boat.x += boat.speed;
-      boat.frameX = 1;
+      boat.frameX = 2;
       boat.frameY = 0;
       boat.moving = true;
     }
