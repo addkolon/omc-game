@@ -48,16 +48,19 @@ const animate = () => {
       boat.width,
       boat.height
     );
+
     checkBackground();
 
     moveBoat();
 
     if (handleMissedGuy()) {
       gamePlay.updateLives();
+      console.log("hande missed guy");
     }
 
     if (handleCollisions()) {
       gamePlay.updateLives();
+      console.log("hande collision");
     }
 
     if (handleSavings()) {
