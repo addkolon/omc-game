@@ -13,7 +13,7 @@ export const handleCollisions = () => {
       boat.y < stoneArray[i].y + stoneArray[i].size &&
       boat.y + boat.height > stoneArray[i].y
     ) {
-      stoneArray.pop(stoneArray[i]);
+      stoneArray[i].y = 1000;
       console.log("pang");
       return true;
     }
@@ -28,7 +28,7 @@ export const handleSavings = () => {
       boat.y < guyArray[i].y + guyArray[i].height &&
       boat.y + boat.height > guyArray[i].y
     ) {
-      guyArray.pop(guyArray[i]);
+      guyArray[i].y = 1000;
       return true;
     }
   }

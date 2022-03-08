@@ -27,7 +27,7 @@ class Stone {
 }
 
 export const handleObstacles = () => {
-  if (gamePlay.frame % 200 === 0) {
+  if (gamePlay.frame % 50 === 0) {
     stoneArray.push(new Stone());
   }
 

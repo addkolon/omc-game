@@ -28,7 +28,7 @@ export class DrowningGuy {
 }
 
 export const handleGuys = () => {
-  if (gamePlay.frame % 150 === 0) {
+  if (gamePlay.frame % 50 === 0) {
     guyArray.unshift(new DrowningGuy());
   }
 
