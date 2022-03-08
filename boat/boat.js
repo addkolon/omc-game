@@ -26,6 +26,8 @@ export const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
 };
 
+// boat coming in from side
+
 const keys = [];
 export const moveBoat = () => {
   if (keys["ArrowUp"] && boat.y > 125) {
