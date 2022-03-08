@@ -28,7 +28,7 @@ export const handleSavings = () => {
       boat.y < guyArray[i].y + guyArray[i].height &&
       boat.y + boat.height > guyArray[i].y
     ) {
-      guyArray[i].y = 1000;
+      guyArray[i].y = 10000;
       return true;
     }
   }
@@ -36,7 +36,7 @@ export const handleSavings = () => {
 
 export const handleMissedGuy = () => {
   for (let i = 0; i < guyArray.length; i++) {
-    if (guyArray[i].x < -187) {
+    if (guyArray[i].x < -187 && guyArray[i].y < 5000) {
       console.log("he died");
       guyArray.pop(guyArray[i]);
       return true;
