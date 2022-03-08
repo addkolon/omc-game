@@ -4,6 +4,7 @@ import { canvas, ctx } from "../index.js";
 
 import { gamePlay } from "../gamePlay/gamePlay.js";
 import { gameBg } from "../background/background.js";
+import { stoneArray } from "../stones/stones.js";
 
 let changeGameSpeed = true;
 
@@ -70,33 +71,28 @@ export const moveBoat = () => {
     boat.frameY = 2;
     boat.moving = true;
 
+    if (!gamePlay.tempSpeedOn) {
+      gamePlay.updateTempSpeed(false, 2, false);
+      gamePlay.tempSpeedOn = true;
+    }
+
     gameBg.forEach((b) => {
       b.update2(false);
     });
-
-    // if (changeGameSpeed) {
-    //   console.log("left");
-    //   if (gamePlay.speed > 1 && !keys["ArrowRight"]) {
-    //     gamePlay.updateSpeed(drivingSpeedChange, false);
-    //   }
-    //   changeGameSpeed = false;
-    // }
   }
   if (keys["ArrowRight"] && boat.x < canvas.width - boat.width) {
     boat.x += boat.speed;
     boat.frameY = 0;
     boat.moving = true;
 
+    if (!gamePlay.tempSpeedOn) {
+      gamePlay.updateTempSpeed(false, 2, true);
+      gamePlay.tempSpeedOn = true;
+    }
+
     gameBg.forEach((b) => {
       b.update2(true);
     });
-    // if (changeGameSpeed) {
-    //   console.log("right");
-    //   if (!keys["ArrowDown"]) {
-    //     gamePlay.updateSpeed(drivingSpeedChange, true);
-    //   }
-    //   changeGameSpeed = false;
-    // }
   }
 
   // speedboost? :P
@@ -111,13 +107,14 @@ export const moveBoat = () => {
 
 window.addEventListener("keydown", (e) => {
   keys[e.key] = true;
-  // if (!keys[e.key]) {
-  //   keys[e.key] = true;
-  // }
 });
 
 window.addEventListener("keyup", (e) => {
   delete keys[e.key];
+  if (gamePlay.tempSpeedOn) {
+    gamePlay.updateTempSpeed(true, 0, true);
+    gamePlay.tempSpeedOn = false;
+  }
   boat.moving = false;
 
   // if (keys[e.key]) {

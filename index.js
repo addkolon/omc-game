@@ -37,17 +37,7 @@ const animate = () => {
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // drawSprite(
-    //   boatSprite,
-    //   boat.width * boat.frameX,
-    //   boat.height * boat.frameY,
-    //   boat.width,
-    //   boat.height,
-    //   boat.x,
-    //   boat.y,
-    //   boat.width,
-    //   boat.height
-    // );
+
     boat.draw(
       boat.image,
       boat.frameY !== 1 ? boat.width * boat.frameX : 133,
@@ -87,9 +77,9 @@ const animate = () => {
       handleBoatFrame();
     }
 
-    if (gamePlay.frame % 500 === 0) {
-      gamePlay.updateSpeed(1, "add");
-    }
+    // if (gamePlay.frame % 500 === 0) {
+    //   gamePlay.updateSpeed(1, "add");
+    // }
   }
 };
 

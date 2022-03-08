@@ -21,8 +21,8 @@ export class DrowningGuy {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   };
 
-  update = () => {
-    this.x -= gamePlay.speed;
+  update = (tempSpeed) => {
+    this.x = tempSpeed ? this.x - gamePlay.tempSpeed : this.x - gamePlay.speed;
     this.draw();
   };
 }
@@ -33,7 +33,7 @@ export const handleGuys = () => {
   }
 
   for (let i = 0; i < guyArray.length; i++) {
-    guyArray[i].update();
+    guyArray[i].update(gamePlay.tempSpeedOn);
   }
 };
 

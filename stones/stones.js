@@ -20,8 +20,8 @@ class Stone {
     ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
   };
 
-  update = () => {
-    this.x -= gamePlay.speed;
+  update = (tempSpeed) => {
+    this.x = tempSpeed ? this.x - gamePlay.tempSpeed : this.x - gamePlay.speed;
     this.draw();
   };
 }
@@ -32,10 +32,10 @@ export const handleObstacles = () => {
   }
 
   for (let i = 0; i < stoneArray.length; i++) {
-    stoneArray[i].update();
+    stoneArray[i].update(gamePlay.tempSpeedOn);
   }
 
-  if (stoneArray.length > 10) {
-    stoneArray.pop(stoneArray[0]);
-  }
+  // if (stoneArray.length > 10) {
+  //   stoneArray.pop(stoneArray[0]);
+  // }
 };
