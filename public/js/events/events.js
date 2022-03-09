@@ -38,7 +38,7 @@ export const handleSavings = () => {
       boat.y < guyArray[i].y + guyArray[i].height &&
       boat.y + boat.height > guyArray[i].y
     ) {
-      guyArray[i].y = 100;
+      guyArray[i].y = 10000;
       return true;
     }
   }
