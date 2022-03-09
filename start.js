@@ -36,3 +36,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log("port: ", PORT);
 });
+
+//  to start: 1. clone repo. 2. "npm i" in rootfolder. 3. "node start.js" in root folder. 4. "localhost:5500" in browser
