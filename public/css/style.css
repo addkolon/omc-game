@@ -129,11 +129,13 @@ h1 {
     justify-content: center;
     flex-direction: column;
     color: #ddca91;
+    padding: 2rem;
 }
 
 #content form {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 input, input:active, input:focus, input:visited {
@@ -154,6 +156,51 @@ input, input:active, input:focus, input:visited {
     right: -1rem;
     z-index: 999;
     width: 60%;
+}
+
+button {
+    color: #ddca91;
+    padding: 0.5rem;
+    background-color: #444341;
+    box-shadow:   -5px 0 0 0 #ddca91,
+                 5px 0 0 0 #ddca91,
+                 0 -5px 0 0 #ddca91,
+                 0 5px 0 0 #ddca91;
+    cursor: pointer;
+}
+
+#rules {
+    border-top: 4px solid #444341;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    color: #444341;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-size: 32px;
+    color: #ddca91;
+    line-height: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+h4 {
+    color: #444341;
+    font-size: 22px;
+    margin-bottom: 0.7rem;
+}
+
+#rules div {
+    width: 100%;
+}
+
+#rules img {
+    height: 1.5rem;
 }
 
 #saves {
