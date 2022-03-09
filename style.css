@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     height: 100vh;
-    padding: 4rem;
+    padding: 0 4rem;
 }
 
 aside {
@@ -28,11 +28,11 @@ aside {
     padding: 2rem;
     text-align: center;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    
 }
 
 .scoreboard {
+    text-align: left;
     width: 100%;
     padding: 1rem;
     box-shadow:   -15px 0 0 0 white,
@@ -41,10 +41,20 @@ aside {
                  0 15px 0 0 white;
 }
 
-h2 {
+ol {
+    margin-left: 1.5rem;
+}
+
+.logo {
+    width: 320px;
+    margin-bottom: 2rem;
+}
+
+h3 {
     text-transform: uppercase;
     font-size: 1.2rem;
     letter-spacing: 5px;
+    margin-bottom: 0.5rem;
 }
 
 
