@@ -74,11 +74,11 @@ export const boatSpeed = 5;
 export const guysSpawnRate = 8;
 export const guysSpeed = 5;
 
-export const stonesSpawnRate = 3;
+export const stonesSpawnRate = 4;
 export const stonesSpeed = 5;
 
-export const objectsSpeedWhenBoatGoinLeft = 3;
-export const objectsSpeedWhenBoatGoinRight = 7;
+export const objectsSpeedWhenBoatGoinLeft = 2;
+export const objectsSpeedWhenBoatGoinRight = 3;
 
 export class GamePlay {
   constructor(lives, score, speed, tempSpeed, tempSpeedOn, frame) {
