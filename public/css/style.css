@@ -96,7 +96,7 @@ h3 {
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
 }
 
 body {
@@ -111,6 +111,7 @@ h1 {
 }
 
 #lives {
+    
     position: absolute;
     top: 1rem;
     left: 1rem;

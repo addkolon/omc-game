@@ -31,12 +31,14 @@ export const handleSavings = () => {
 
     let boatWidth = boat.frameY === 0 || boat.frameY === 2 ? boat.width : 125;
     if (
+      guyArray[i].y < 999 &&
       boat.x < guyArray[i].x + guyArray[i].width &&
       boat.x + boatWidth > guyArray[i].x &&
       boat.y < guyArray[i].y + guyArray[i].height &&
       boat.y + boat.height > guyArray[i].y
     ) {
-      guyArray[i].y = 10000;
+      guyArray[i].y = 1000;
+      guyArray[i].saved = true;
       return true;
     }
   }
@@ -44,9 +46,20 @@ export const handleSavings = () => {
 
 export const handleMissedGuy = () => {
   for (let i = 0; i < guyArray.length; i++) {
-    if (guyArray[i].x < -187 && guyArray[i].y < 9000) {
-      guyArray.pop(guyArray[i]);
+    // console.log(guyArray[i].x < -187);
+    if (guyArray[i].x < -187 && !guyArray[i].saved && guyArray[i].y < 999) {
+      guyArray[i].saved = true;
+      // console.log("missed");
       return true;
     }
   }
 };
+// export const handleMissedGuy = () => {
+//   for (let i = 0; i < guyArray.length; i++) {
+//     if (guyArray[i].x < -187) {
+//       guyArray.splice(guyArray[i], 1);
+//       i--;
+//       return true;
+//     }
+//   }
+// };

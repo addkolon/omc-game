@@ -12,7 +12,7 @@ guy.src = "../sprite/Person.png";
 export const guyArray = [];
 
 export class DrowningGuy {
-  constructor(x, y, width, height, image) {
+  constructor(x, y, width, height, image, saved) {
     // this.x = canvas.width;
     // this.y = Math.random() * (canvas.height - 125 - 134) + 125;
     // this.width = 60;
@@ -23,6 +23,7 @@ export class DrowningGuy {
     this.width = width;
     this.height = height;
     this.image = image;
+    this.saved = saved;
   }
 
   draw = () => {
@@ -58,10 +59,14 @@ export const handleGuys = () => {
       y = Math.random() * (canvas.height - 125 - 100) + 125;
     }
 
-    guyArray.unshift(new DrowningGuy(x, y, width, height, guy));
+    guyArray.unshift(new DrowningGuy(x, y, width, height, guy, false));
   }
 
   for (let i = 0; i < guyArray.length; i++) {
     guyArray[i].update(gamePlay.tempSpeedOn);
+  }
+
+  if (guyArray.length > 100) {
+    guyArray.pop(0);
   }
 };

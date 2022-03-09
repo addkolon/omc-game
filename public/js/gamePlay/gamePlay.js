@@ -64,9 +64,10 @@
 
 /** @format */
 
-const livesEl = document.querySelector("#lives");
+const mainURL = "http://localhost:5500";
+
+const livesEl = document.querySelector("#livesUl");
 const savesEl = document.querySelector("#saves");
-const gameSpeedEl = document.querySelector("#game-speed");
 
 // general settings
 export const boatSpeed = 5;
@@ -90,13 +91,29 @@ export class GamePlay {
     this.frame = frame;
   }
 
-  updateLives = () => {
+  updateLives = async () => {
     this.lives -= 1;
     if (this.lives < 1) {
-      livesEl.textContent = "DÖD";
+      let res = await fetch(mainURL + "/gameover", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          score: this.score,
+        }),
+      }).then((res) => res.json());
+      console.log(res);
+      if (res.success) {
+        location.href = mainURL + "/index.html";
+      }
     } else {
-      livesEl.textContent = "Liv: " + this.lives;
+      livesEl.innerHTML = "";
+      for (let i = 0; i < this.lives; i++) {
+        livesEl.innerHTML += "<li><img src='./sprite/life-ring.png'></li>";
+      }
     }
+    console.log(this.lives);
   };
 
   updateScore = () => {
@@ -106,7 +123,6 @@ export class GamePlay {
 
   updateSpeed = (amount, add) => {
     this.speed = add ? this.speed + amount : this.speed - amount;
-    // gameSpeedEl.textContent = "gamespeed: " + this.speed;
   };
 
   updateTempSpeed = (reset, amount, add) => {
@@ -114,7 +130,6 @@ export class GamePlay {
       this.tempSpeed = this.speed;
     }
     this.tempSpeed = add ? this.speed + amount : this.speed - amount;
-    // gameSpeedEl.textContent = "gamespeed: " + this.tempSpeed;
   };
 
   updateFrame = () => {
@@ -122,4 +137,4 @@ export class GamePlay {
   };
 }
 
-export const gamePlay = new GamePlay(100, 0, 5, 5, false, 1);
+export const gamePlay = new GamePlay(10, 0, 5, 5, false, 1);

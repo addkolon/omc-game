@@ -16,6 +16,14 @@ import {
   handleMissedGuy,
 } from "./events/events.js";
 
+// const scoreB = document.getElementById("scoreB");
+// scoreB.innerHTML = "";
+// scores
+//   .sort((a, b) => a.score - b.score)
+//   .map((s) => {
+//     scoreB.innerHTML += `<li>${s.name} <span>${s.score}</span></li>`;
+//   });
+
 export const canvas = document.querySelector(".canvas1");
 export const ctx = canvas.getContext("2d");
 canvas.width = 1200;
@@ -38,7 +46,6 @@ const animate = () => {
     then = now - (elapsed % fpsInterval);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    console.log(boat.width * boat.frameX);
     boat.draw(
       boat.image,
       boat.width * boat.frameX,

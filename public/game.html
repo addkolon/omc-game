@@ -1,57 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="main">
-        <main>
-            <canvas class="canvas1">
-
-            </canvas>
-        </main>
-        <aside>
-            <img class="logo" src="../sprite/logotype.png">
-            <div class="scoreboard">
-                <h3>Scoreboard</h3>
-                <ol>
-                    <li>Mattias <span>1200</span></li>
-                    <li>Olof <span>1200</span></li>
-                    <li>Petter <span>1200</span></li>
-                    <li>Niklas <span>1200</span></li>
-                    <li>...</li>
-                    <li>...</li>
-                    <li>...</li>
-                    <li>...</li>
-                    <li>...</li>
-                    <li>...</li>
-                </ol>
-            </div>
-            <div class="info">
-                <h2 id="game-speed">GAMESPEED: 1</h2>
-                <h3 id="lives">LIVES:100</h3>
-                <h4>POINTS: 0</h4>
-            </div>
-
-        </aside>
-    </div>
-
-
-    <script src="../js/index.js" type="module"></script>
-    <script src="../js/drowningGuys/drowningGuys.js" type="module"></script>
-    <script src="../js/gamePlay/gamePlay.js" type="module"></script>
-    <script src="../js/background/background.js" type="module"></script>
-    <script src="../js/stones/stones.js" type="module"></script>
-    <script src="../js/events/events.js" type="module"></script>
-</body>
-
-</html> -->
 
 
 <!DOCTYPE html>
@@ -69,7 +15,7 @@
     <div class="main">
         <main>
             <div id="lives">
-                <ul>
+                <ul id="livesUl">
                     <li><img src="./sprite/life-ring.png"></li>
                     <li><img src="./sprite/life-ring.png"></li>
                     <li><img src="./sprite/life-ring.png"></li>
@@ -91,8 +37,8 @@
             <img class="logo" src="./sprite/logotype.png">
             <div class="scoreboard">
                 <h3>Scoreboard</h3>
-                <ol>
-                    <li>Mattias <span>1200</span></li>
+                <ol id="scoreB">
+                    <!-- <li>Mattias <span>1200</span></li>
                     <li>Olof <span>1200</span></li>
                     <li>Petter <span>1200</span></li>
                     <li>Niklas <span>1200</span></li>
@@ -101,16 +47,14 @@
                     <li>...</li>
                     <li>...</li>
                     <li>...</li>
-                    <li>...</li>
+                    <li>...</li> -->
                 </ol>
             </div>
         </aside>
     </div>
     
-    <!-- <h2 id="game-speed">GAMESPEED: 1</h2> -->
     
-    <!-- 1min speltid. tiden ökar när man tar en gubbe. missa gubbe, köra på sten. 3liv. gamespeed.  -->
-
+    <!-- <script src="./js/homePage.js" type="module"></script> -->
     <script src="../js/index.js" type="module"></script>
     <script src="../js/drowningGuys/drowningGuys.js" type="module"></script>
     <script src="../js/gamePlay/gamePlay.js" type="module"></script>
