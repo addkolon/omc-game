@@ -45,7 +45,7 @@ window.addEventListener("load", async () => {
                         <div id="instructions">
                             <div class="keys">
                                 <h4>How to stear:</h4>
-                                <p>Use arrow keys</p>
+                                <img src="sprite/arrow-keys.png">
                             </div>
                             <div class="object">
                                 <h4>Pickup:</h4>
@@ -105,7 +105,7 @@ window.addEventListener("load", async () => {
                         <div id="instructions">
                             <div class="keys">
                                 <h4>How to stear:</h4>
-                                <p>Use arrow keys</p>
+                                <img src="sprite/arrow-keys.png">
                             </div>
                             <div class="object">
                                 <h4>Pickup:</h4>

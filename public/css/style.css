@@ -224,6 +224,7 @@ h4 {
     top: 1rem;
     right: 1rem;
     z-index: 999;
+    font-size: 3rem;
 }
 
 #lives ul {
