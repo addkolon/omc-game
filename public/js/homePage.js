@@ -39,7 +39,25 @@ window.addEventListener("load", async () => {
           <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
           required>
       </form>
-      <button id="startBtn">start</button>
+      <button class="startBtn">Gotta save ´em all</button>
+                    <div id="rules">
+                        <h2>How to play!</h2>
+                        <div id="instructions">
+                            <div class="keys">
+                                <h4>How to stear:</h4>
+                                <p>Use arrow keys</p>
+                            </div>
+                            <div class="object">
+                                <h4>Pickup:</h4>
+                                <img src="sprite/Person.png">
+                            </div>
+                            <div class="threat">
+                                <h4>Watch out for:</h4>
+                                <img src="sprite/Stones.png">
+                            </div>
+                        </div>
+                    </div>
+
     `;
     const emailInput = document.querySelector("#emailen");
     const nameInput = document.querySelector("#name");
@@ -81,7 +99,24 @@ window.addEventListener("load", async () => {
             <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
             required>
         </form>
-        <button id="startBtn">start</button>
+        <button class="startBtn">Gotta save ´em all</button>
+                    <div id="rules">
+                        <h2>How to play!</h2>
+                        <div id="instructions">
+                            <div class="keys">
+                                <h4>How to stear:</h4>
+                                <p>Use arrow keys</p>
+                            </div>
+                            <div class="object">
+                                <h4>Pickup:</h4>
+                                <img src="sprite/Person.png">
+                            </div>
+                            <div class="threat">
+                                <h4>Watch out for:</h4>
+                                <img src="sprite/Stones.png">
+                            </div>
+                        </div>
+                    </div>
       `;
       const emailInput = document.querySelector("#emailen");
       const nameInput = document.querySelector("#name");
