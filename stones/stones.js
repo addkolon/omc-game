@@ -24,7 +24,7 @@ class Stone {
   }
 
   draw = () => {
-    ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+    ctx.drawImage(this.image, this.x, this.y, this.size, this.size / 1.5);
   };
 
   update = (tempSpeed) => {
