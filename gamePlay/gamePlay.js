@@ -36,7 +36,7 @@ export class GamePlay {
   };
 
   updateScore = () => {
-    this.score += 100;
+    this.score += 50;
     savesEl.textContent = "Räddade: " + this.score;
   };
 
