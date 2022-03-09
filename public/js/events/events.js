@@ -4,6 +4,7 @@ import { stoneArray } from "../stones/stones.js";
 import { guyArray } from "../drowningGuys/drowningGuys.js";
 
 import { boat } from "../boat/boat.js";
+import { ctx } from "../index.js";
 
 export const handleCollisions = () => {
   for (let i = 0; i < stoneArray.length; i++) {
@@ -13,6 +14,7 @@ export const handleCollisions = () => {
       boat.x + boatWidth > stoneArray[i].x &&
       boat.y < stoneArray[i].y + stoneArray[i].size &&
       boat.y + boat.height > stoneArray[i].y
+      
     ) {
       stoneArray[i].y = 1000;
       return true;
