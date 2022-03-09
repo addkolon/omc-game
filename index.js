@@ -38,6 +38,7 @@ const animate = () => {
     then = now - (elapsed % fpsInterval);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    console.log(boat.width * boat.frameX);
     boat.draw(
       boat.image,
       boat.width * boat.frameX,
@@ -54,12 +55,10 @@ const animate = () => {
 
     if (handleMissedGuy()) {
       gamePlay.updateLives();
-      console.log("hande missed guy");
     }
 
     if (handleCollisions()) {
       gamePlay.updateLives();
-      console.log("hande collision");
     }
 
     if (handleSavings()) {

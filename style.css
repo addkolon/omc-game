@@ -6,7 +6,11 @@
     box-sizing: border-box;
     font-family: 'VT323', monospace;
     font-size: 32px;
-    color: white;
+    color: black;
+}
+
+.hidden {
+    display: none;
 }
 
 body {
@@ -49,6 +53,9 @@ h2 {
 
 
 .canvas1 {
+    /* olof tillfällig */
+    /* margin-left: 5rem; */
+
     position: relative;
     width: 1200px;
     height: 800px;

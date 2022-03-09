@@ -39,9 +39,7 @@ export class Boat {
 // boat coming in from side
 
 export const handleBoatFrame = () => {
-  console.log(boat.frameX);
   if (boat.frameX < 2 && boat.moving) {
-    console.log("innnnnne");
     boat.frameX += 1;
   } else {
     boat.frameX = 0;

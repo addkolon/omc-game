@@ -41,8 +41,6 @@ export const handleObstacles = () => {
     let x = canvas.width;
     let size = Math.floor(Math.random() * 70) + 30;
 
-    console.log(y);
-
     while (
       guyArray.filter((s) => {
         return (
