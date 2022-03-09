@@ -66,7 +66,7 @@ export const handleGuys = () => {
     guyArray[i].update(gamePlay.tempSpeedOn);
   }
 
-  if (guyArray.length > 100) {
-    guyArray.pop(0);
-  }
+  // if (guyArray.length > 100) {
+  //   guyArray.pop(0);
+  // }
 };

@@ -59,7 +59,7 @@ export const handleObstacles = () => {
   for (let i = 0; i < stoneArray.length; i++) {
     stoneArray[i].update(gamePlay.tempSpeedOn);
   }
-  if (stoneArray.length > 100) {
-    stoneArray.pop(0);
-  }
+  // if (stoneArray.length > 100) {
+  //   stoneArray.pop(0);
+  // }
 };
