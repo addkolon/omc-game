@@ -106,7 +106,7 @@ export class GamePlay {
 
   updateSpeed = (amount, add) => {
     this.speed = add ? this.speed + amount : this.speed - amount;
-    gameSpeedEl.textContent = "gamespeed: " + this.speed;
+    // gameSpeedEl.textContent = "gamespeed: " + this.speed;
   };
 
   updateTempSpeed = (reset, amount, add) => {
@@ -114,7 +114,7 @@ export class GamePlay {
       this.tempSpeed = this.speed;
     }
     this.tempSpeed = add ? this.speed + amount : this.speed - amount;
-    gameSpeedEl.textContent = "gamespeed: " + this.tempSpeed;
+    // gameSpeedEl.textContent = "gamespeed: " + this.tempSpeed;
   };
 
   updateFrame = () => {

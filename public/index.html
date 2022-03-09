@@ -40,32 +40,29 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./css/style.css">
         <title>Document</title>
     </head>
     
     <body>
         <div class="main">
             <main>
-                <img src="sprite/petter.png" alt="" class="petter">
+                <img src="./sprite/petter.png" alt="" class="petter">
                 <div id="fake-canvas">
                     <div id="content">
                         <h1>Mission briefing</h1>
-                        <form>
-                            <input type="text" id="name" placeholder="Fill in your name..." 
+                        <form action="/game" method="post">
+                            <input type="text" name="name" id="name" placeholder="Fill in your name..." 
                             required>
-                            <input type="email" id="email" placeholder="Fill in your e-mail..." 
+                            <input name="email" type="email" id="email" placeholder="Fill in your e-mail..." 
                             required>
+                            <button class="startBtn hidden" type="submit">start</button>
                         </form>
-                        <div class="startBtn hidden">
-                            <a href="./game.html">start</a>
-                        </div>
                     </div>
                 </div>
-                
             </main>
             <aside>
-                <img class="logo" src="sprite/logotype.png">
+                <img class="logo" src="./sprite/logotype.png">
                 <div class="scoreboard">
                     <h3>Scoreboard</h3>
                     <ol>
