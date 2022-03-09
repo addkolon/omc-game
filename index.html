@@ -8,15 +8,61 @@
     <title>Document</title>
 </head>
 <body>
- 
-    <form>
-        <input type="email" id="email" placeholder="email" 
-        required>
-    </form>
+    <!DOCTYPE html>
+    <html lang="en">
     
-    <div class="startBtn hidden">
-        <a href="./game.html">start</a>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+    
+    <body>
+        <div class="main">
+            <main>
+                <img src="sprite/petter.png" alt="" class="petter">
+                <div id="fake-canvas">
+                    <div id="content">
+                        <h1>Misson briefing</h1>
+                        <form>
+                            <input type="text" id="name" placeholder="Fill in your name..." 
+                            required>
+                            <input type="email" id="email" placeholder="Fill in your e-mail..." 
+                            required>
+                        </form>
+                        <div class="startBtn hidden">
+                            <a href="./game.html">start</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+            <aside>
+                <img class="logo" src="sprite/logotype.png">
+                <div class="scoreboard">
+                    <h3>Scoreboard</h3>
+                    <ol>
+                        <li>Mattias <span>1200</span></li>
+                        <li>Olof <span>1200</span></li>
+                        <li>Petter <span>1200</span></li>
+                        <li>Niklas <span>1200</span></li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </body>
+    
+    </html>
+ 
+    
 
 
 

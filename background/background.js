@@ -55,7 +55,7 @@ class Layer {
   }
 }
 
-const layer1 = new Layer(bg4, 0.04);
+const layer1 = new Layer(bg4, 0);
 const layer2 = new Layer(bg3, 0.06);
 const layer3 = new Layer(bg2, 0.08);
 const layer4 = new Layer(bg1, 0.1);

@@ -1,20 +1,20 @@
 /** @format */
 
-const livesEl = document.querySelector("h3");
-const savesEl = document.querySelector("h4");
-const gameSpeedEl = document.querySelector("h2");
+const livesEl = document.querySelector("#lives");
+const savesEl = document.querySelector("#saves");
+const gameSpeedEl = document.querySelector("#game-speed");
 
 // general settings
 export const boatSpeed = 5;
 
-export const guysSpawnRate = 2;
+export const guysSpawnRate = 8;
 export const guysSpeed = 5;
 
-export const stonesSpawnRate = 2;
+export const stonesSpawnRate = 3;
 export const stonesSpeed = 5;
 
 export const objectsSpeedWhenBoatGoinLeft = 3;
-export const objectsSpeedWhenBoatGoinRight = 8;
+export const objectsSpeedWhenBoatGoinRight = 7;
 
 export class GamePlay {
   constructor(lives, score, speed, tempSpeed, tempSpeedOn, frame) {
@@ -37,7 +37,7 @@ export class GamePlay {
 
   updateScore = () => {
     this.score += 50;
-    savesEl.textContent = "Räddade: " + this.score;
+    savesEl.textContent = this.score;
   };
 
   updateSpeed = (amount, add) => {

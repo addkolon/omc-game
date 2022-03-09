@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'VT323', monospace;
     font-size: 32px;
-    color: black;
+    color: white;
 }
 
 .hidden {
@@ -18,11 +18,84 @@ body {
     background-size: cover;
 }
 
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ddca91;
+}
+
+#lives {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 999;
+}
+
+#content {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 600px;
+    height: 600px;
+    background-color: #948e7a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #ddca91;
+}
+
+#content form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, input:active, input:focus, input:visited {
+    margin-bottom: 1rem;
+    color: #ddca91;
+    padding: 0.5rem;
+    border: none;
+    background-color: #676662;
+    box-shadow:   -5px 0 0 0 #ddca91,
+                 5px 0 0 0 #ddca91,
+                 0 -5px 0 0 #ddca91,
+                 0 5px 0 0 #ddca91;
+}
+
+.petter {
+    position: absolute;
+    bottom: 0rem;
+    right: -1rem;
+    z-index: 999;
+    width: 60%;
+}
+
+#saves {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+}
+
+#lives ul {
+    display: flex;
+    list-style: none;
+}
+
+#lives ul li {
+    margin-right: 0.3rem;
+}
+
 .main {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100vh;
     padding: 0 4rem;
+}
+
+main {
+    position: relative;
 }
 
 aside {
@@ -71,6 +144,22 @@ h3 {
     height: 800px;
     border: 1px solid black;
     background: url(sprite/water9.png);
+    box-shadow:   -15px 0 0 0 white,
+                 15px 0 0 0 white,
+                 0 -15px 0 0 white,
+                 0 15px 0 0 white;
+}
+
+#fake-canvas {
+    /* olof tillfällig */
+    /* margin-left: 5rem; */
+
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    border: 1px solid black;
+    background: url(sprite/start-bg.png);
+    background-size: cover;
     box-shadow:   -15px 0 0 0 white,
                  15px 0 0 0 white,
                  0 -15px 0 0 white,
