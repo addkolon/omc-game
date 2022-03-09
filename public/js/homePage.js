@@ -6,18 +6,8 @@ const mainURL = "http://localhost:5500";
 
 const content = document.querySelector("#content");
 
-// function create_UUID() {
-//   let dt = new Date().getTime();
-//   let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-//     /[xy]/g,
-//     function (c) {
-//       let r = (dt + Math.random() * 16) % 16 | 0;
-//       dt = Math.floor(dt / 16);
-//       return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-//     }
-//   );
-//   return uuid;
-// }
+// i sekunder
+const showGameOverScreenTime = 4;
 
 let scores;
 // let bool = true;
@@ -29,7 +19,6 @@ window.addEventListener("load", async () => {
     .then((data) => {
       scores = data;
     });
-  console.log(scores);
 
   if (scores.length < 1) {
     content.innerHTML = `<h1>Mission briefing</h1>
@@ -39,7 +28,25 @@ window.addEventListener("load", async () => {
           <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
           required>
       </form>
-      <button id="startBtn">start</button>
+      <button id="startBtn">Gotta save ´em all</button>
+                    <div id="rules">
+                        <h2>How to play!</h2>
+                        <div id="instructions">
+                            <div class="keys">
+                                <h4>How to stear:</h4>
+                                <p>Use arrow keys</p>
+                            </div>
+                            <div class="object">
+                                <h4>Pickup:</h4>
+                                <img src="sprite/Person.png">
+                            </div>
+                            <div class="threat">
+                                <h4>Watch out for:</h4>
+                                <img src="sprite/Stones.png">
+                            </div>
+                        </div>
+                    </div>
+
     `;
     const emailInput = document.querySelector("#emailen");
     const nameInput = document.querySelector("#name");
@@ -69,9 +76,9 @@ window.addEventListener("load", async () => {
       });
     }
   } else {
-    content.innerHTML = `<div>Tack ${scores[scores.length - 1].name}! Poäng: ${
-      scores[scores.length - 1].score
-    }</div>`;
+    content.innerHTML = `<div>Bra jobbat ${
+      scores[scores.length - 1].name
+    }! Poäng: ${scores[scores.length - 1].score}</div>`;
 
     setTimeout(() => {
       content.innerHTML = `<h1>Mission briefing</h1>
@@ -81,14 +88,31 @@ window.addEventListener("load", async () => {
             <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
             required>
         </form>
-        <button id="startBtn">start</button>
+        <button id="startBtn">Gotta save ´em all</button>
+                    <div id="rules">
+                        <h2>How to play!</h2>
+                        <div id="instructions">
+                            <div class="keys">
+                                <h4>How to stear:</h4>
+                                <p>Use arrow keys</p>
+                            </div>
+                            <div class="object">
+                                <h4>Pickup:</h4>
+                                <img src="sprite/Person.png">
+                            </div>
+                            <div class="threat">
+                                <h4>Watch out for:</h4>
+                                <img src="sprite/Stones.png">
+                            </div>
+                        </div>
+                    </div>
       `;
       const emailInput = document.querySelector("#emailen");
       const nameInput = document.querySelector("#name");
       const startButton = document.getElementById("startBtn");
       if (startButton) {
         startButton.addEventListener("click", async (e) => {
-          let playerID = create_UUID();
+          // let playerID = create_UUID();
           let res = await fetch(mainURL + "/game", {
             method: "POST",
             headers: {
@@ -110,7 +134,7 @@ window.addEventListener("load", async () => {
           // location.href = mainURL + "/game.html";
         });
       }
-    }, 3000);
+    }, showGameOverScreenTime * 1000);
     const scoreB = document.getElementById("scoreB");
 
     scoreB.innerHTML = "";
@@ -119,6 +143,14 @@ window.addEventListener("load", async () => {
       .map((s) => {
         scoreB.innerHTML += `<li>${s.name} <span>${s.score}</span></li>`;
       });
+
+    if (scoreB.children.length < 11) {
+      for (let i = 0; i < 10; i++) {
+        if (scoreB.children[i] === undefined) {
+          scoreB.innerHTML += `<li>...</li>`;
+        }
+      }
+    }
   }
 });
 

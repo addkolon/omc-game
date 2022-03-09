@@ -5,7 +5,7 @@ function togglePlay() {
   return myAudio.paused ? myAudio.play() : myAudio.pause();
 }
 
-import { handleGuys } from "./drowningGuys/drowningGuys.js";
+import { guyArray, handleGuys } from "./drowningGuys/drowningGuys.js";
 
 import { gamePlay } from "./gamePlay/gamePlay.js";
 
@@ -13,7 +13,7 @@ import { checkBackground } from "./background/background.js";
 
 import { boat, handleBoatFrame, moveBoat } from "./boat/boat.js";
 
-import { handleObstacles } from "./stones/stones.js";
+import { handleObstacles, stoneArray } from "./stones/stones.js";
 
 import {
   handleCollisions,
@@ -104,6 +104,7 @@ const startAnimating = (fps) => {
 };
 
 const animate = () => {
+  console.log(stoneArray);
   requestAnimationFrame(animate);
   now = Date.now();
   elapsed = now - then;
