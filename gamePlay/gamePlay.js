@@ -4,6 +4,18 @@ const livesEl = document.querySelector("h3");
 const savesEl = document.querySelector("h4");
 const gameSpeedEl = document.querySelector("h2");
 
+// general settings
+export const boatSpeed = 5;
+
+export const guysSpawnRate = 2;
+export const guysSpeed = 5;
+
+export const stonesSpawnRate = 2;
+export const stonesSpeed = 5;
+
+export const objectsSpeedWhenBoatGoinLeft = 3;
+export const objectsSpeedWhenBoatGoinRight = 8;
+
 export class GamePlay {
   constructor(lives, score, speed, tempSpeed, tempSpeedOn, frame) {
     this.lives = lives;

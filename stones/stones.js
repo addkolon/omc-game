@@ -2,10 +2,12 @@
 
 import { canvas, ctx } from "../index.js";
 
-import { gamePlay } from "../gamePlay/gamePlay.js";
-
-// hur ofta stenar spawnar
-let stonesFrequency = 50;
+import {
+  gamePlay,
+  stonesSpawnRate,
+  stonesSpeed,
+} from "../gamePlay/gamePlay.js";
+import { guyArray } from "../drowningGuys/drowningGuys.js";
 
 const stone = new Image();
 stone.src = "../sprite/Stones.png";
@@ -13,10 +15,12 @@ export const stoneArray = [];
 
 class Stone {
   constructor(x, y, size, image) {
-    this.x = canvas.width;
-    this.y = Math.random() * (canvas.height - 125) + 125;
-    this.size = Math.floor(Math.random() * 70) + 30;
-    this.image = stone;
+    this.x = x;
+    // this.y = Math.random() * (canvas.height - 125) + 125;
+    // this.size = Math.floor(Math.random() * 70) + 30;
+    this.y = y;
+    this.size = size;
+    this.image = image;
   }
 
   draw = () => {
@@ -24,14 +28,34 @@ class Stone {
   };
 
   update = (tempSpeed) => {
-    this.x = tempSpeed ? this.x - gamePlay.tempSpeed : this.x - gamePlay.speed;
+    this.x = tempSpeed
+      ? this.x - gamePlay.tempSpeed - (stonesSpeed - 5)
+      : this.x - gamePlay.speed - (stonesSpeed - 5);
     this.draw();
   };
 }
 
 export const handleObstacles = () => {
-  if (gamePlay.frame % stonesFrequency === 0) {
-    stoneArray.push(new Stone());
+  if (gamePlay.frame % (stonesSpawnRate * 10) === 0) {
+    let y = Math.random() * (canvas.height - 125 - 50) + 125;
+    let x = canvas.width;
+    let size = Math.floor(Math.random() * 70) + 30;
+
+    console.log(y);
+
+    while (
+      guyArray.filter((s) => {
+        return (
+          x < s.x + s.width &&
+          x + size > s.x &&
+          y < s.y + s.height &&
+          y + size > s.y
+        );
+      }).length > 0
+    ) {
+      y = Math.random() * (canvas.height - 50) + 125;
+    }
+    stoneArray.push(new Stone(x, y, size, stone));
   }
 
   for (let i = 0; i < stoneArray.length; i++) {

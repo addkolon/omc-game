@@ -2,7 +2,12 @@
 
 import { canvas, ctx } from "../index.js";
 
-import { gamePlay } from "../gamePlay/gamePlay.js";
+import {
+  boatSpeed,
+  gamePlay,
+  objectsSpeedWhenBoatGoinLeft,
+  objectsSpeedWhenBoatGoinRight,
+} from "../gamePlay/gamePlay.js";
 import { gameBg } from "../background/background.js";
 
 const boatImage = new Image();
@@ -68,7 +73,7 @@ export const moveBoat = () => {
     boat.moving = true;
 
     if (!gamePlay.tempSpeedOn) {
-      gamePlay.updateTempSpeed(false, 3, false);
+      gamePlay.updateTempSpeed(false, objectsSpeedWhenBoatGoinLeft, false);
       gamePlay.tempSpeedOn = true;
     }
 
@@ -82,7 +87,7 @@ export const moveBoat = () => {
     boat.moving = true;
 
     if (!gamePlay.tempSpeedOn) {
-      gamePlay.updateTempSpeed(false, 2, true);
+      gamePlay.updateTempSpeed(false, objectsSpeedWhenBoatGoinRight, true);
       gamePlay.tempSpeedOn = true;
     }
 
@@ -112,24 +117,16 @@ window.addEventListener("keyup", (e) => {
     gamePlay.tempSpeedOn = false;
   }
   boat.moving = false;
-
-  // if (keys[e.key]) {
-  //   delete keys[e.key];
-  //   if (e.key === "ArrowRight") {
-  //     console.log("right up");
-  //     if (!keys["ArrowLeft"] && gamePlay.speed > 1) {
-  //       gamePlay.updateSpeed(drivingSpeedChange, false);
-  //     }
-  //     changeGameSpeed = true;
-  //   }
-  //   if (e.key === "ArrowLeft") {
-  //     console.log("left up");
-  //     if (!keys["ArrowRight"] && gamePlay.speed > 1) {
-  //       gamePlay.updateSpeed(drivingSpeedChange, true);
-  //     }
-  //     changeGameSpeed = true;
-  //   }
-  // }
 });
 
-export const boat = new Boat(boatImage, 200, 200, 176, 74, 0, 0, 5, false);
+export const boat = new Boat(
+  boatImage,
+  200,
+  200,
+  176,
+  74,
+  0,
+  0,
+  boatSpeed,
+  false
+);
