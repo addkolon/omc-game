@@ -1,20 +1,38 @@
 /** @format */
 
-import emails from "./emails/emails.js";
-import { fs } from "fs";
+import express from "express";
+import path from "path";
 
-const emailInput = document.querySelector("#email");
-const emailButton = document.querySelector(".sub");
-const startButton = document.querySelector(".startBtn");
+import fs from "fs";
 
-emailInput.addEventListener("input", () => {
-  if (emailInput.validity.valid) {
-    startButton.classList.remove("hidden");
-  } else {
-    startButton.classList.add("hidden");
-  }
+const app = express();
+
+const PORT = 5500;
+
+app.use(express.urlencoded());
+app.use(express.json());
+app.use(express.static(path.resolve("./public")));
+
+app.post("/game", async (req, res) => {
+  fs.appendFile(
+    "./emails/emails.txt",
+    `
+------
+Namn: ${req.body.name}
+Email: ${req.body.email}
+------  
+`,
+    function (err) {
+      if (err) throw err;
+    }
+  );
+  res.sendFile("game.html", { root: "./public" });
 });
 
-startButton.addEventListener("click", () => {
-  emails.push(emailInput.value);
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "./public" });
+});
+
+app.listen(PORT, () => {
+  console.log("port: ", PORT);
 });

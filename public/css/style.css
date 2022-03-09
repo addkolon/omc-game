@@ -14,7 +14,7 @@
 }
 
 body {
-    background: url('sprite/bg.gif');
+    background: url('../sprite/bg.gif');
     background-size: cover;
 }
 
@@ -63,14 +63,11 @@ h3 {
 
 
 .canvas1 {
-    /* olof tillfällig */
-    /* margin-left: 5rem; */
-
     position: relative;
     width: 1200px;
     height: 800px;
     border: 1px solid black;
-    background: url(sprite/water9.png);
+    background: url(../sprite/water9.png);
     box-shadow:   -15px 0 0 0 white,
                  15px 0 0 0 white,
                  0 -15px 0 0 white,

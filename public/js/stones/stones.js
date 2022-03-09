@@ -59,8 +59,4 @@ export const handleObstacles = () => {
   for (let i = 0; i < stoneArray.length; i++) {
     stoneArray[i].update(gamePlay.tempSpeedOn);
   }
-
-  // if (stoneArray.length > 10) {
-  //   stoneArray.pop(stoneArray[0]);
-  // }
 };

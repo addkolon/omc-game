@@ -1,0 +1,23 @@
+{
+  "name": "matte-spel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addkolon/omc-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/addkolon/omc-game/issues"
+  },
+  "homepage": "https://github.com/addkolon/omc-game#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
