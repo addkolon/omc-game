@@ -34,6 +34,33 @@ export const ctx = canvas.getContext("2d");
 canvas.width = 1200;
 canvas.height = 800;
 
+let scores;
+window.addEventListener("load", async () => {
+  await fetch("scoreBoard.json")
+    .then((res) => res.json())
+    .then((data) => {
+      scores = data;
+    });
+
+  const scoreB = document.getElementById("scoreB");
+
+  scoreB.innerHTML = "";
+  scores
+    .sort((a, b) => b.score - a.score)
+    .map((s, i) => {
+      if (i !== scores.length - 1)
+        scoreB.innerHTML += `<li>${s.name} <span>${s.score}</span></li>`;
+    });
+
+  if (scoreB.children.length < 11) {
+    for (let i = 0; i < 10; i++) {
+      if (scoreB.children[i] === undefined) {
+        scoreB.innerHTML += `<li>...</li>`;
+      }
+    }
+  }
+});
+
 // ANIMATE EXPLOSION
 
 // let canvasPosition = canvas.getBoundingClientRect();

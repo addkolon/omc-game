@@ -137,4 +137,4 @@ export class GamePlay {
   };
 }
 
-export const gamePlay = new GamePlay(10, 0, 5, 5, false, 1);
+export const gamePlay = new GamePlay(5, 0, 5, 5, false, 1);
