@@ -38,7 +38,6 @@ Email: ${req.body.email}
   };
   fs.readFile("./public/scoreBoard.json", (err, data) => {
     let json = JSON.parse(data);
-    console.log(json);
     json.push(scorB);
 
     fs.writeFile("./public/scoreBoard.json", JSON.stringify(json), (error) => {
