@@ -144,9 +144,9 @@ const animate = () => {
       handleBoatFrame();
     }
 
-    // if (gamePlay.frame % 500 === 0) {
-    //   gamePlay.updateSpeed(1, "add");
-    // }
+    if (gamePlay.frame % 200 === 0) {
+      gamePlay.updateSpeed(1, "add");
+    }
   }
 };
 

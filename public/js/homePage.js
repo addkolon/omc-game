@@ -7,7 +7,7 @@ const mainURL = "http://localhost:5500";
 const content = document.querySelector("#content");
 
 // i sekunder
-const showGameOverScreenTime = 4;
+const showGameOverScreenTime = 10;
 
 let scores;
 // let bool = true;
@@ -76,9 +76,9 @@ window.addEventListener("load", async () => {
       });
     }
   } else {
-    content.innerHTML = `<div>Bra jobbat ${
+    content.innerHTML = `<div><h1>GAME OVER</h1><h2>Bra jobbat, ${
       scores[scores.length - 1].name
-    }! Poäng: ${scores[scores.length - 1].score}</div>`;
+    }!</h2> <h3>Score: ${scores[scores.length - 1].score}</h3></div>`;
 
     setTimeout(() => {
       content.innerHTML = `<h1>Mission briefing</h1>
@@ -141,7 +141,7 @@ window.addEventListener("load", async () => {
     scores
       .sort((a, b) => b.score - a.score)
       .map((s) => {
-        scoreB.innerHTML += `<li>${s.name} <span>${s.score}</span></li>`;
+        scoreB.innerHTML += `<li><span>${s.score}p</span> - ${s.name} </li>`;
       });
 
     if (scoreB.children.length < 11) {
