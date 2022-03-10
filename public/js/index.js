@@ -1,10 +1,5 @@
 /** @format */
 
-function togglePlay() {
-  var myAudio = document.getElementById("myAudio");
-  return myAudio.paused ? myAudio.play() : myAudio.pause();
-}
-
 import { guyArray, handleGuys } from "./drowningGuys/drowningGuys.js";
 
 import { gamePlay } from "./gamePlay/gamePlay.js";
@@ -131,7 +126,6 @@ const startAnimating = (fps) => {
 };
 
 const animate = () => {
-  console.log(stoneArray);
   requestAnimationFrame(animate);
   now = Date.now();
   elapsed = now - then;
@@ -176,9 +170,9 @@ const animate = () => {
       handleBoatFrame();
     }
 
-    // if (gamePlay.frame % 500 === 0) {
-    //   gamePlay.updateSpeed(1, "add");
-    // }
+    if (gamePlay.frame % 200 === 0) {
+      gamePlay.updateSpeed(1, "add");
+    }
   }
 };
 
