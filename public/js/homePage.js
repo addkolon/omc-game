@@ -7,7 +7,7 @@ const mainURL = "http://localhost:5500";
 const content = document.querySelector("#content");
 
 // i sekunder
-const showGameOverScreenTime = 10;
+const showGameOverScreenTime = 6;
 
 let scores;
 // let bool = true;
@@ -76,7 +76,7 @@ window.addEventListener("load", async () => {
       });
     }
   } else {
-    content.innerHTML = `<div><h1>GAME OVER</h1><h2>Bra jobbat, ${
+    content.innerHTML = `<div class="game-over"><h1>GAME OVER</h1><h2>Well done, ${
       scores[scores.length - 1].name
     }!</h2> <h3>Score: ${scores[scores.length - 1].score}</h3></div>`;
 

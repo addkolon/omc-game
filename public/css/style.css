@@ -262,14 +262,36 @@ aside {
     text-align: left;
     width: 100%;
     padding: 1rem;
+    font-size: 12px;
     box-shadow:   -15px 0 0 0 white,
                  15px 0 0 0 white,
                  0 -15px 0 0 white,
                  0 15px 0 0 white;
 }
 
+.scoreboard li {
+    margin-bottom: 8px;
+}
+
+.game-over {
+    text-align: center;
+}
+
+.game-over h2 {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.game-over h3 {
+    font-size: 50px;
+}
+
+.scoreboard li, .scoreboard li span {
+    font-size: 20px;
+}
+
 ol {
-    margin-left: 1.5rem;
+    margin-left: 1rem;
 }
 
 .logo {
