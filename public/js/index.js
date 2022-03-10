@@ -1,10 +1,5 @@
 /** @format */
 
-function togglePlay() {
-  var myAudio = document.getElementById("myAudio");
-  return myAudio.paused ? myAudio.play() : myAudio.pause();
-}
-
 import { guyArray, handleGuys } from "./drowningGuys/drowningGuys.js";
 
 import { gamePlay } from "./gamePlay/gamePlay.js";
