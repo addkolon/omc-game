@@ -7,7 +7,7 @@ const mainURL = "http://localhost:5500";
 const content = document.querySelector("#content");
 
 // i sekunder
-const showGameOverScreenTime = 6;
+const showGameOverScreenTime = 1;
 
 let scores;
 // let bool = true;
@@ -27,8 +27,13 @@ window.addEventListener("load", async () => {
           required>
           <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
           required>
+          <div class="privacy">
+            
+            <label> I agree on ÖMCs <a href="https://omc.nu/wp-content/uploads/2021/03/Integritetspolicy-OMC-2021.pdf" target="_blank">Privacy Policy</a></label>
+          </div>
+          <input id="privacy" type="checkbox" name="privacy">
       </form>
-      <button id="startBtn">Gotta save ´em all</button>
+      <button id="startBtn" class="hidden">Gotta save ´em all</button>
                     <div id="rules">
                         <h2>How to play!</h2>
                         <div id="instructions">
@@ -51,6 +56,15 @@ window.addEventListener("load", async () => {
     const emailInput = document.querySelector("#emailen");
     const nameInput = document.querySelector("#name");
     const startButton = document.getElementById("startBtn");
+    if (emailInput)
+        emailInput.addEventListener("input", () => {
+          console.log("email");
+          if (emailInput.validity.valid) {
+            startButton.classList.remove("hidden");
+          } else {
+            startButton.classList.add("hidden");
+          }
+        });
     if (startButton) {
       startButton.addEventListener("click", async (e) => {
         // let playerID = create_UUID();
@@ -87,8 +101,12 @@ window.addEventListener("load", async () => {
             required>
             <input name="email" type="email" id="emailen" placeholder="Fill in your e-mail..."
             required>
+            <div class="privacy">
+            <label> I agree on ÖMCs <a href="https://omc.nu/wp-content/uploads/2021/03/Integritetspolicy-OMC-2021.pdf" target="_blank">Privacy Policy</a></label>
+            <input id="privacy" type="checkbox" name="privacy">
+            </div>
         </form>
-        <button id="startBtn">Gotta save ´em all</button>
+        <button id="startBtn" class="hidden">Gotta save ´em all</button>
                     <div id="rules">
                         <h2>How to play!</h2>
                         <div id="instructions">
@@ -110,6 +128,15 @@ window.addEventListener("load", async () => {
       const emailInput = document.querySelector("#emailen");
       const nameInput = document.querySelector("#name");
       const startButton = document.getElementById("startBtn");
+      if (emailInput)
+        emailInput.addEventListener("input", () => {
+          console.log("email");
+          if (emailInput.validity.valid) {
+            startButton.classList.remove("hidden");
+          } else {
+            startButton.classList.add("hidden");
+          }
+        });
       if (startButton) {
         startButton.addEventListener("click", async (e) => {
           // let playerID = create_UUID();
@@ -140,8 +167,10 @@ window.addEventListener("load", async () => {
     scoreB.innerHTML = "";
     scores
       .sort((a, b) => b.score - a.score)
-      .map((s) => {
-        scoreB.innerHTML += `<li><span>${s.score}p</span> - ${s.name} </li>`;
+      .map((s, i) => {
+        if (i < 10) {
+          scoreB.innerHTML += `<li><span>${s.score}p</span> - ${s.name} </li>`
+        }   
       });
 
     if (scoreB.children.length < 11) {

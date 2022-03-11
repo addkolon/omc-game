@@ -43,8 +43,9 @@ window.addEventListener("load", async () => {
   scores
     .sort((a, b) => b.score - a.score)
     .map((s, i) => {
-      if (i !== scores.length - 1)
-        scoreB.innerHTML += `<li>${s.name} <span>${s.score}</span></li>`;
+      if (i < 10) {
+        scoreB.innerHTML += `<li><span>${s.score}p</span> - ${s.name} </li>`
+      }   
     });
 
   if (scoreB.children.length < 11) {

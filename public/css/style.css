@@ -98,7 +98,7 @@ h3 {
 
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 body {
@@ -141,16 +141,29 @@ h1 {
     width: 100%;
 }
 
-input, input:active, input:focus, input:visited {
+input {
     margin-bottom: 1rem;
     color: #ddca91;
-    padding: 0.5rem;
+    padding: 0.2rem;
     border: none;
+    font-size: 28px;
     background-color: #676662;
     box-shadow:   -5px 0 0 0 #ddca91,
                  5px 0 0 0 #ddca91,
                  0 -5px 0 0 #ddca91,
                  0 5px 0 0 #ddca91;
+}
+
+::placeholder {
+    color: #ddca91;
+}
+
+input[type=checkbox] {
+    box-shadow:   -2px 0 0 0 #ddca91,
+                 2px 0 0 0 #ddca91,
+                 0 -2px 0 0 #ddca91,
+                 0 2px 0 0 #ddca91;
+                 padding: 0;
 }
 
 .petter {
@@ -159,6 +172,7 @@ input, input:active, input:focus, input:visited {
     right: -1rem;
     z-index: 999;
     width: 60%;
+    pointer-events: none 
 }
 
 button {
@@ -221,10 +235,10 @@ h4 {
 
 #saves {
     position: absolute;
-    top: 1rem;
+    top: 0.5rem;
     right: 1rem;
     z-index: 999;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 #lives ul {
@@ -261,7 +275,7 @@ aside {
 .scoreboard {
     text-align: left;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     font-size: 12px;
     box-shadow:   -15px 0 0 0 white,
                  15px 0 0 0 white,
