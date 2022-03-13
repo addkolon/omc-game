@@ -96,10 +96,10 @@ h3 {
 }
 
 
-
+/* 
 .hidden {
     display: none;
-}
+} */
 
 body {
     background: url('../sprite/bg.gif');

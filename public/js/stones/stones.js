@@ -24,7 +24,10 @@ class Stone {
   }
 
   draw = () => {
+    // ctx.fillStyle = 'white';
+    // ctx.fillRect(this.x, this.y, this.size, this.size / 1.5);
     ctx.drawImage(this.image, this.x, this.y, this.size, this.size / 1.5);
+
   };
 
   update = (tempSpeed) => {

@@ -9,7 +9,7 @@ const savesEl = document.querySelector("#saves");
 export const boatSpeed = 5;
 
 export const guysSpawnRate = 8;
-export const guysSpeed = 5;
+export const guysSpeed =5;
 
 export const stonesSpawnRate = 4;
 export const stonesSpeed = 5;

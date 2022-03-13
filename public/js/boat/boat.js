@@ -27,6 +27,8 @@ export class Boat {
   }
 
   draw = (image, x, y, width, height, frameX, frameY, dW, dH) => {
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(image, x, y, width, height, frameX, frameY, dW, dH);
   };
 
